@@ -1,0 +1,33 @@
+<template>
+    <div class="header-container">
+        <div class="l-content">
+            <el-button  icon="el-icon-menu" size="mini"></el-button> 
+            <span>首页</span>
+        </div>
+        <div class="r-content"> </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name :"common-header",
+  data() {
+    return {};
+  },
+};
+</script>
+
+<style lang="less" scoped>
+.header-container {
+    background-color: #333;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .l-content {
+        span {
+            color: aliceblue;
+        }
+    }
+} 
+</style>
