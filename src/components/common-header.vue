@@ -4,7 +4,17 @@
             <el-button  icon="el-icon-menu" size="mini"></el-button> 
             <span>首页</span>
         </div>
-        <div class="r-content"> </div>
+        <div class="r-content"> 
+            <el-dropdown>
+                <span class="el-dropdown-link">
+                    <img src="../assets/images/user.png" alt="">
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item>个人中心</el-dropdown-item>
+                    <el-dropdown-item>退出</el-dropdown-item>
+                </el-dropdown-menu>
+                </el-dropdown>
+        </div>
     </div>
 </template>
 
@@ -26,7 +36,16 @@ export default {
     align-items: center;
     .l-content {
         span {
-            color: aliceblue;
+            color: #fff;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+    }
+    .r-content {
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
         }
     }
 } 
