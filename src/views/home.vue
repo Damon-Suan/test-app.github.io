@@ -49,7 +49,8 @@
         </el-card>
       </div>
       <el-card style="height:280px">
-
+        <!-- 折线图 -->
+        <div ref="echarts1" style="height:280px"></div>
       </el-card>
       <div class="graph">
         <el-card></el-card>
@@ -61,6 +62,7 @@
 
 <script>
 import { getData } from "../api";
+import * as echarts from 'echarts';
 export default {
   name: "home",
   data() {
@@ -116,6 +118,33 @@ export default {
     getData().then(({ data }) => {
       const { tableData } = data.data;
       this.tableData = tableData;
+
+      // 折线图
+      //基于准备好的dom，初始化echarts实例
+      const echarts1 = echarts.init(this.$refs.echarts1)
+       var lineOption = {}
+      //处理数据xAxis
+      const { orderData } = data.data
+      console.log(orderData)
+      const legendData = Object.keys(orderData.data[0])
+        lineOption.xAxis = {
+          data: orderData.date.map(item =>item.substr(0,4) + '-' + item.substr(6,4) + '-' + item.substr(6,8))
+        }
+        lineOption.yAxis = {}
+        lineOption.legend = {
+        data: legendData 
+      }   
+
+        //指定图表的配置项和数据
+        lineOption.series = []
+        legendData.forEach(key => {
+          lineOption.series.push({
+            name:key,
+            data:orderData.data.map(item =>item[key]),
+            type:'line',
+          })
+        })
+        echarts1.setOption(lineOption)
     });
   },
 };
@@ -157,7 +186,7 @@ export default {
 }
 .num {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;//拆行
   justify-content: space-between;
   .icon {
     width: 80px;

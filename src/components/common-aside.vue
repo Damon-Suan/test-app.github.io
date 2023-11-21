@@ -43,7 +43,7 @@
   min-height: 400px;
 }
 .el-menu {
-  height: 120vh;
+  height: 100vh;
   border-right: none;
   h3 {
     color: #fff;
@@ -119,6 +119,7 @@ export default {
       ) {
         this.$router.push(item.path);
       }
+      this.$store.commit('selecMenu',item)
     },
   },
   computed: {

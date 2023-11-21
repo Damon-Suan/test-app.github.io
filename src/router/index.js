@@ -15,11 +15,11 @@ const routes = [
     component: Main,
     redirect: "/home",//重定向
     children: [
-      { path: 'home', component: Home },
-      { path: 'user', component: User },
-      { path: 'mall', component: Mall },
-      { path: 'page-one', component: PageOne },
-      { path: 'page-two', component: PageTwo },
+      { path: 'home', name:'home', component: Home },
+      { path: 'user', name:'user', component: User },
+      { path: 'mall', name:'mall', component: Mall },
+      { path: 'page-one', name:'page1', component: PageOne },
+      { path: 'page-two', name:'page2', component: PageTwo },
     ]
   }
 
